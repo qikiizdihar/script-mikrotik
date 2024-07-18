@@ -1,0 +1,14 @@
+#Lewat konten
+/ip firewall filter
+add action=drop chain=forward content="facebook.com" 
+add action=drop chain=forward content="fbcdn.net"
+add action=drop chain=forward content=".facebook."
+add action=drop chain=forward content=".fbcdn."
+
+===========================================================
+#Lewat TLS
+/ip firewall filter
+add action=drop chain=forward protocol=tcp tls-host="facebook.com"
+add action=drop chain=forward protocol=tcp tls-host="fbcdn.net"
+add action=drop chain=forward protocol=tcp tls-host="*.facebook.*"
+add action=drop chain=forward protocol=tcp tls-host="*.fbcdn.*"
